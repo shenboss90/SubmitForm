@@ -1,0 +1,34 @@
+.formborder{
+    border: 1px solid black;
+    margin: 30px;
+    display: inline-block;
+}
+
+.formborder div{
+    padding: 7px;
+}
+
+button{
+    padding: 4px;
+    background-color: brown;
+    color: white;
+    margin: 10px;
+}
+
+#emailerr{
+    color: red;
+}
+#errpass{
+    color: red;
+}
+#errpass2{
+    color: green;
+}
+.output{
+    border: 1px solid black;
+    display: inline-block;
+    padding: 10px;
+}
+#phoneerr {
+    color: green;
+}

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form Input</title>
+    <link rel="stylesheet" href="form.css">
+</head>
+<body>
+    <form id="format" class="formborder">
+        <div>
+            <label for="surname">Surname</label>
+            <input type="text" id="surname" oninput="getSurname()">
+        </div>
+        <div>
+            <label for="email">Email</label>
+            <input type="email" id="email" oninput="getEmail()">
+            <span id="emailerr"></span>
+        </div>
+        <div>
+            <label for="pnumber">Phone Number</label>
+            <input type="text" id="pnumber" oninput="validatePhone()">
+            <span id="phoneerr"></span>
+        </div>
+        <div>
+          <label for="password">Password</label>
+            <input type="password" id="password">
+            <p id="errpass"></p>
+        </div>
+        <div>
+            <label for="password2"> Confirm Password</label>
+            <input type="password" id="password2"  oninput="confirmPass()" >
+            <p id="errpass2"></p>
+        </div>
+        <div>
+            <label for="">Address</label>
+            <input type="text" id="address" oninput="getadress()" >
+        </div>
+
+        <button >Submit</button>
+
+    </form>
+    <div class="output">
+        <h1> Output Display</h1>
+        <p id="display"></p>
+        <p id="display1"></p >
+        <p id="display2"></p>
+        <p id="display3"></p>
+     
+      </div>
+
+
+
+    <script>
+           function getSurname(){
+            let surname = document.getElementById('surname').value;
+          
+           }
+
+           function getEmail(){
+            let Email = document.getElementById('email').value;
+             let emailerr = '';
+            if(Email.indexOf('@') != -1 && Email.indexOf('.') != -1){
+                emailerr = 'valid Email'
+            }else if(Email.indexOf('@') < Email.indexOf('.')) {
+                emailerr = 'valid Email'
+            } else {
+                emailerr = 'Invalid Email'
+            }
+             
+            document.getElementById('emailerr').innerHTML = emailerr;
+
+           }
+
+
+           function getPass(){
+        let pass = document.getElementById('password').value;
+        let errPass = " ";
+
+        if (pass.length < 6 ){
+          errPass = 'invalid password'
+        }else if(pass.length >= 6 && pass.length <= 10 ){
+            errPass = 'valid password'
+        }
+
+        
+    }
+
+    function confirmPass(){
+        let checkpass;
+        let pass = document.getElementById('password').value;
+        let confirmpass = document.getElementById('password2').value;
+        if(pass === confirmpass){
+           checkpass = 'Password Matched'; 
+          
+        }else if(confirmpass != pass){
+            checkpass= 'wrong password'
+        }
+        document.getElementById('errpass2').innerHTML = checkpass;
+    }
+
+    function getadress(){
+            let Address = document.getElementById('address').value;
+           
+
+           }
+      let phoneError = document.getElementById('phoneerr')
+
+         function validatePhone(){
+            let phoneNumber = document.getElementById('pnumber').value
+            if( phoneNumber.length = 0){
+                phoneError.innerHTML = 'inpute phone number'
+                return false
+            }
+            if( phoneNumber.length != 11){
+                phoneError.innerHTML = 'inpute phone number with 11numbeers'
+                return false
+            }
+            phoneError.innerHTML = 'valid phone number'
+
+
+         }
+
+
+
+//            function getPhone(){
+//             let phoneNumber = document.getElementById('pnumber').value
+//             phoneeer;
+//             if(phoneNumber.startsWith('080') && phoneNumber.startsWith('090') && phoneNumber.startsWith('081') && phoneNumber.length === 11){
+
+//                 phoneeer = 'valid phone number'
+            
+//              }else if(phoneNumber.contains('A-Za-z')){
+//                 phoneeer = 'phone number shoulnt contain a letter'
+//                 }
+             
+//              document.getElementById('phoneerr').innerHTML = phoneeer
+//            }
+
+
+let form = document.getElementById('format')
+form.addEventListener('submit', function(event){
+    event.preventDefault()
+    let email = form['email'].value.trim()
+    let address = form['address'].value
+    let name = form['surname'].value
+    let phone = form['pnumber'].value
+    document.getElementById('display1').innerHTML=email 
+    document.getElementById('display2').innerHTML = address
+    document.getElementById('display').innerHTML= name
+    document.getElementById('display3').innerHTML= phone
+})
+
+    </script>
+</body>
+</html>
